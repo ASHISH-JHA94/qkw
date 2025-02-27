@@ -351,12 +351,13 @@ bool utils::splitatcolon(string &s, smatch &m){
 
 bool utils::splitstr(string &ss, VS_t &vs, char delim){
 
-	string RS, rxs, ts, rs = "";
+	constexpr const char* RS = "{}";
+	string rxs, ts, rs = "";
 	if (delim == '.') RS = "[,a-zA-Z0-9{}_-]";
 	if (delim == ',') RS = "[.a-zA-Z0-9:{}_-]";
 	if (delim == ':') RS = "[/,.a-zA-Z0-9{}_-]";
 	
-	rxs = fmt::format(RS,delim);
+	rxs = fmt::format(RS, delim);
 	regex r(rxs);
 	bool b;
 
